@@ -1,14 +1,13 @@
 package App.Classes;
 
 public class Time {
-    String nome;
-    double notaFinal;
-    int integrantesTime;
-    Aluno integrantes[];
+    private String nome;
+    private double notaFinal;
+    private int integrantesTime;
+    private Aluno integrantes[];
 
     public Time(String nome) {
         this.nome = nome;
-        this.notaFinal = (Double) null;
         this.integrantesTime = 0;
         this.integrantes = new Aluno[5];
     }
@@ -37,12 +36,52 @@ public class Time {
         this.integrantesTime = integrantesTime;
     }
 
-    public Aluno[] getIntegrantes() {
-        return integrantes;
+    public Aluno getIntegranteMatricula(int matricula) {
+        for (int i = 0; i < integrantes.length; i++) {
+            if (this.integrantes[i].getMatricula() == matricula) {
+                return this.integrantes[i];
+            }
+        }
+        return null;
     }
 
-    public void setIntegrantes(Aluno[] integrantes) {
-        this.integrantes = integrantes;
+    public Aluno getIntegranteEmail(String email) {
+        for (int i = 0; i < integrantes.length; i++) {
+            if (this.integrantes[i].getEmail().equalsIgnoreCase(email)) {
+                return this.integrantes[i];
+            }
+        }
+        return null;
+    }
+
+    public boolean setIntegrante(Aluno aluno) {
+        for (int i = 0; i < this.integrantes.length; i++) {
+            if (this.integrantes[i] == null) {
+                this.integrantes[i] = aluno;
+                integrantesTime++;
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public boolean deleteIntegrante(Aluno aluno) {
+        for (int i = 0; i < this.integrantes.length; i++) {
+            if (this.integrantes[i] == aluno) {
+                this.integrantes[i].setTime("<ALUNO SEM TIME>");
+                this.integrantes = null;
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public void deleteTime() {
+        for (int i = 0; i < this.integrantes.length; i++) {
+            if (this.integrantes[i] != null) {
+                this.integrantes[i].setTime("<ALUNO SEM TIME>");
+            }
+        }
     }
 
 }

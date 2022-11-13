@@ -13,7 +13,8 @@ public class Aluno {
 
     @Override
     public String toString() {
-        return "Nome=" + this.nome + "\nEmail=" + this.email + "\nTime=" + this.time + "\nMatricula=" + this.matricula;
+        return "Nome do aluno:" + this.nome + "\nEmail: " + this.email + "\nTime: " + this.time + "\nMatricula: "
+                + this.matricula;
     }
 
     public String getNome() {
