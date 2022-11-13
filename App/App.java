@@ -1,12 +1,20 @@
 package App;
 
 import App.Classes.Aluno;
+import App.Views.Input;
 
 public class App {
     public static void main(String[] args) {
-        Aluno aluno1 = new Aluno("Gabriel", "gabriel.gchagas99@edu.pucrs.br", 22204007);
 
-        System.out.println(aluno1);
+        int numero;
+
+        Input in = new Input();
+
+        System.out.println("Insira um número inteiro: ");
+
+        numero = in.nextInt();
+
+        System.out.println(numero);
 
     }
 }
