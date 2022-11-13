@@ -12,7 +12,7 @@ public class Professor {
 
     @Override
     public String toString() {
-        return "Professor [nome=" + nome + ", email=" + email + ", idFuncional=" + idFuncional + "]";
+        return "Nome=" + nome + "\nEmail=" + email + "\nID Funcional:" + idFuncional;
     }
 
     public String getNome() {
