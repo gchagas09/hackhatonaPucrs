@@ -31,4 +31,8 @@ public class Input {
         }
         return number;
     }
+
+    public String nextLine() {
+        return this.scanner.nextLine();
+    }
 }
