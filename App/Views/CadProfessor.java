@@ -2,7 +2,7 @@ package App.Views;
 import App.Classes.*;
 
 /**
- * View de ocadastro do professor;
+ * View de cadastro do professor;
  */
 public class CadProfessor {
     private Professor professor;

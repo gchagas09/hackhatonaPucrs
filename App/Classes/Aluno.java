@@ -13,7 +13,7 @@ public class Aluno {
 
     @Override
     public String toString() {
-        return "Nome do aluno:" + this.nome + "\nEmail: " + this.email + "\nTime: " + this.time + "\nMatricula: "
+        return "Nome do aluno:" + this.nome + "\nEmail: " + this.email + "\nViewTime: " + this.time + "\nMatricula: "
                 + this.matricula;
     }
 
