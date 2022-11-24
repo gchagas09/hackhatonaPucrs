@@ -6,12 +6,21 @@ public class ViewTime {
     private String nome;
     private double notaFinal;
     private int proximoIndice;
+    private Hackatona hackatona;
+
+    public ViewTime(Hackatona hackatona) {
+        this.hackatona = hackatona;
+    }
 
     public Aluno[] mostraAlunos(Aluno[] alunos) {
         for (int i = 0; i < proximoIndice; i++) {
             System.out.println(alunos[i]);
         }
         return alunos;
+    }
+
+    public void mostraTimeVencedor(Time time) {
+        System.out.println("Time vencedor: \n" + time);
     }
 
     public String mostraNotas(Time[] notaMaior) {

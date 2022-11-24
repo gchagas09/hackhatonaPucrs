@@ -1,5 +1,7 @@
 package App.Classes;
 
+import java.util.Arrays;
+
 public class Time {
     private String nome;
     private double notaFinal;
@@ -10,6 +12,17 @@ public class Time {
         this.nome = nome;
         this.integrantesTime = 0;
         this.integrantes = new Aluno[5];
+    }
+
+    @Override
+    public String toString() {
+        String integrantes = "";
+        for (int i = 0; i < integrantes.length(); i++) {
+            if (this.integrantes[i] != null) {
+                integrantes += this.integrantes[i] + "\n";
+            }
+        }
+        return "Nome do time: " + this.nome + "\nNota Final: " + this.notaFinal + "\nIntegrantes: " + integrantes;
     }
 
     public String getNome() {
