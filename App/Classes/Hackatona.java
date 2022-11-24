@@ -1,5 +1,9 @@
 package App.Classes;
 
+import javax.swing.text.View;
+
+import App.Views.ViewTime;
+
 public class Hackatona {
     private Professor[] professores = new Professor[10];
     public Time[] time = new Time[15];
@@ -8,6 +12,7 @@ public class Hackatona {
                                           // de grupos;
     private int profsCadastrados, timesCadastrados, alunosCadastrados, alunosSemTime;
     private Time timeVencedor;
+
 
     public Time getTimeVencedor() {
         return timeVencedor;
@@ -108,13 +113,15 @@ public class Hackatona {
      */
 
     public boolean createAluno(Aluno aluno) {
-        for (int i = 0; i < this.alunos.length; i++) {
-            if (this.alunos[i] == null) {
-                this.alunos[i] = aluno;
-                alunosCadastrados++;
-                return true;
+        if (readAlunoMatricula(aluno.getMatricula())==null){
+            for (int i = 0; i < this.alunos.length; i++) {
+                if (this.alunos[i] == null) {
+                    this.alunos[i] = aluno;
+                    alunosCadastrados++;
+                    return true;
+                }
             }
-        }
+        }        
         return false;
     }
 
@@ -165,6 +172,15 @@ public class Hackatona {
         return null;
     }
 
+    public String readIntegrantesTime(String nome){
+        for(int i = 0; i<this.time.length; i++){
+            if(this.time[i].getNome().equalsIgnoreCase(nome)){
+                return this.time[i].getIntegranteString();
+            }
+        }
+        return "TIME VAZIO";
+    }
+
     public void identificaVencedor(Time[] times) {
         Time timeVencedor = times[0];
         for (int i = 1; i < this.time.length; i++) {
@@ -176,5 +192,76 @@ public class Hackatona {
         }
         this.timeVencedor = timeVencedor;
     }
+
+    public boolean timeExiste(String nome){
+        for(int i = 0; i<this.time.length; i++){
+            if(this.time[i]!=null){
+                if(this.time[i].getNome().equalsIgnoreCase(nome)){
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
+    public boolean insereAlunoTime(String nomeTime, Aluno aluno){
+        for(int i=0; i<this.time.length; i++){
+            if(this.time[i].getNome().equalsIgnoreCase(nomeTime)){
+                this.time[i].setIntegrante(aluno);
+                return true;
+            }
+        }
+        return false;
+    }
+    public boolean removeAlunoTime(Aluno aluno){
+        for(int i=0; i<this.time.length; i++){
+            if(this.time[i]!=null){
+                if(aluno.getTime().equalsIgnoreCase(this.time[i].getNome())){
+                    this.time[i].deleteIntegrante(aluno);
+                    aluno.setTime("<ALUNO SEM TIME>");
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
+    public String consultarTime(String nome){
+        String valor = "ESSE TIME NÃO EXISTE";
+        if(this.timeExiste(nome)){
+            for(int i =0; i<this.time.length; i++){
+                if(this.time[i].getNome().equalsIgnoreCase(nome)){
+                    return this.time[i].toString();
+                }
+            }
+        }
+        return valor;
+    }
+
+    public int getProfsCadastrados() {
+        return profsCadastrados;
+    }
+
+    public void setProfsCadastrados(int profsCadastrados) {
+        this.profsCadastrados = profsCadastrados;
+    }
+
+    public int getTimesCadastrados() {
+        return timesCadastrados;
+    }
+
+    public void setTimesCadastrados(int timesCadastrados) {
+        this.timesCadastrados = timesCadastrados;
+    }
+
+    public int getAlunosCadastrados() {
+        return alunosCadastrados;
+    }
+
+    public void setAlunosCadastrados(int alunosCadastrados) {
+        this.alunosCadastrados = alunosCadastrados;
+    }
+
+    
 
 }

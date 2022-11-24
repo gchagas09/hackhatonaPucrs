@@ -88,7 +88,19 @@ public class Time {
         }
         return false;
     }
-
+    public String getIntegranteString(){
+        String integrantes="";
+        for(int i=0; i<this.integrantes.length;i++){
+            if(this.integrantes[i]!=null){
+                integrantes+=this.integrantes[i].getNome()+"\n";
+            }   
+        }
+        if(integrantes.equalsIgnoreCase("")){
+            integrantes = "TIME VAZIO";
+        }
+        return integrantes;
+        
+    }
     public void deleteTime() {
         for (int i = 0; i < this.integrantes.length; i++) {
             if (this.integrantes[i] != null) {

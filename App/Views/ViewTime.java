@@ -7,6 +7,7 @@ public class ViewTime {
     private double notaFinal;
     private int proximoIndice;
     private Hackatona hackatona;
+    private Input in;
 
     public ViewTime(Hackatona hackatona) {
         this.hackatona = hackatona;
@@ -37,4 +38,6 @@ public class ViewTime {
         }
         return relatorioDeNotas;
     }
+
+    
 }
