@@ -7,11 +7,15 @@ public class Hackatona {
                                           // máxima
                                           // de grupos;
     private int profsCadastrados, timesCadastrados, alunosCadastrados, alunosSemTime;
+    private Time timeVencedor;
+
+    public Time getTimeVencedor() {
+        return timeVencedor;
+    }
 
     /*
      * CRUD PROFESSOR
      */
-
     public boolean createProfessor(Professor prof) {
         for (int i = 0; i < this.professores.length; i++) {
             if (this.professores[i] == null) {
@@ -159,6 +163,18 @@ public class Hackatona {
             }
         }
         return null;
+    }
+
+    public void identificaVencedor(Time[] times) {
+        Time timeVencedor = times[0];
+        for (int i = 1; i < this.time.length; i++) {
+            if (times[i] != null) {
+                if (times[i].getNotaFinal() > timeVencedor.getNotaFinal()) {
+                    timeVencedor = times[i];
+                }
+            }
+        }
+        this.timeVencedor = timeVencedor;
     }
 
 }
