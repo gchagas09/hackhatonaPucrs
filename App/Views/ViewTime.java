@@ -11,6 +11,7 @@ public class ViewTime {
 
     public ViewTime(Hackatona hackatona) {
         this.hackatona = hackatona;
+        this.in = new Input();
     }
 
     public Aluno[] mostraAlunos(Aluno[] alunos) {

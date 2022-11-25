@@ -15,7 +15,7 @@ public class Input {
             number = Integer.valueOf(scanner.nextLine());
         } catch (Exception e) {
             System.out.println("<INFORME UM NÚMERO INTEIRO>");
-            number = nextInt();
+            number = this.scanner.nextInt();
         }
         return number;
     }
@@ -26,13 +26,15 @@ public class Input {
             number = Double.valueOf(this.scanner.nextLine());
         } catch (Exception e) {
             System.out.println("<INFORME UM NÚMERO COM VÍRGULA>");
-            number = nextDouble();
+            number = this.scanner.nextDouble();
 
         }
         return number;
     }
 
     public String nextLine() {
-        return this.scanner.nextLine();
+        String linha;
+        linha = this.scanner.nextLine();
+        return linha;
     }
 }

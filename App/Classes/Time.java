@@ -5,6 +5,7 @@ import java.util.Arrays;
 public class Time {
     private String nome;
     private double notaFinal;
+    private boolean notaAtribuida;
     private int integrantesTime;
     private Aluno integrantes[];
 
@@ -12,6 +13,7 @@ public class Time {
         this.nome = nome;
         this.integrantesTime = 0;
         this.integrantes = new Aluno[5];
+        this.notaAtribuida= false;
     }
 
     @Override
@@ -108,5 +110,15 @@ public class Time {
             }
         }
     }
+
+    public boolean isNotaAtribuida() {
+        return notaAtribuida;
+    }
+
+    public void setNotaAtribuida(boolean notaAtribuida) {
+        this.notaAtribuida = notaAtribuida;
+    }
+
+    
 
 }
