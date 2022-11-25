@@ -13,18 +13,19 @@ public class Time {
         this.nome = nome;
         this.integrantesTime = 0;
         this.integrantes = new Aluno[5];
-        this.notaAtribuida= false;
+        this.notaAtribuida = false;
     }
 
     @Override
     public String toString() {
-        String integrantes = "";
-        for (int i = 0; i < integrantes.length(); i++) {
+        String integrantes = "**************************\n";
+        for (int i = 0; i < this.integrantes.length; i++) {
             if (this.integrantes[i] != null) {
-                integrantes += this.integrantes[i] + "\n";
+                integrantes += this.integrantes[i].getNome() + "\n";
             }
         }
-        return "Nome do time: " + this.nome + "\nNota Final: " + this.notaFinal + "\nIntegrantes: " + integrantes;
+        integrantes += "**************************";
+        return "Nome do time: " + this.nome + "\nNota Final: " + this.notaFinal + "\nIntegrantes: \n" + integrantes;
     }
 
     public String getNome() {
@@ -90,19 +91,21 @@ public class Time {
         }
         return false;
     }
-    public String getIntegranteString(){
-        String integrantes="";
-        for(int i=0; i<this.integrantes.length;i++){
-            if(this.integrantes[i]!=null){
-                integrantes+=this.integrantes[i].getNome()+"\n";
-            }   
+
+    public String getIntegranteString() {
+        String integrantes = "";
+        for (int i = 0; i < this.integrantes.length; i++) {
+            if (this.integrantes[i] != null) {
+                integrantes += this.integrantes[i].getNome() + "\n";
+            }
         }
-        if(integrantes.equalsIgnoreCase("")){
+        if (integrantes.equalsIgnoreCase("")) {
             integrantes = "TIME VAZIO";
         }
         return integrantes;
-        
+
     }
+
     public void deleteTime() {
         for (int i = 0; i < this.integrantes.length; i++) {
             if (this.integrantes[i] != null) {
@@ -118,7 +121,5 @@ public class Time {
     public void setNotaAtribuida(boolean notaAtribuida) {
         this.notaAtribuida = notaAtribuida;
     }
-
-    
 
 }

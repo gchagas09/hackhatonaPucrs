@@ -1,14 +1,13 @@
 package App.Classes;
 
 public class Hackatona {
-    private Professor[] professores = new Professor[10];
+    public Professor[] professores = new Professor[10];
     public Time[] time = new Time[15];
     public Aluno[] alunos = new Aluno[75];// 5 x 15 = 75 - a quantidade máxima de integrantes vezes a quantidade
                                           // máxima
                                           // de grupos;
     private int profsCadastrados, timesCadastrados, alunosCadastrados;
     private Time timeVencedor;
-
 
     public Time getTimeVencedor() {
         return timeVencedor;
@@ -18,7 +17,7 @@ public class Hackatona {
      * CRUD PROFESSOR
      */
     public boolean createProfessor(Professor prof) {
-        if(this.readProfessorId(prof.getIdFuncional())==null){
+        if (this.readProfessorId(prof.getIdFuncional()) == null) {
             for (int i = 0; i < this.professores.length; i++) {
                 if (this.professores[i] == null) {
                     this.professores[i] = prof;
@@ -32,7 +31,7 @@ public class Hackatona {
 
     public Professor readProfessorId(int idFuncional) {
         for (int i = 0; i < this.professores.length; i++) {
-            if(this.professores[i]!=null){
+            if (this.professores[i] != null) {
                 if (this.professores[i].getIdFuncional() == idFuncional) {
                     return this.professores[i];
                 }
@@ -113,7 +112,7 @@ public class Hackatona {
      */
 
     public boolean createAluno(Aluno aluno) {
-        if (readAlunoMatricula(aluno.getMatricula())==null){
+        if (readAlunoMatricula(aluno.getMatricula()) == null) {
             for (int i = 0; i < this.alunos.length; i++) {
                 if (this.alunos[i] == null) {
                     this.alunos[i] = aluno;
@@ -121,7 +120,7 @@ public class Hackatona {
                     return true;
                 }
             }
-        }        
+        }
         return false;
     }
 
@@ -156,7 +155,7 @@ public class Hackatona {
 
     public Aluno readAlunoMatricula(int matricula) {
         for (int i = 0; i < alunos.length; i++) {
-            if(this.alunos[i]!=null){
+            if (this.alunos[i] != null) {
                 if (this.alunos[i].getMatricula() == matricula) {
                     return this.alunos[i];
                 }
@@ -174,9 +173,9 @@ public class Hackatona {
         return null;
     }
 
-    public String readIntegrantesTime(String nome){
-        for(int i = 0; i<this.time.length; i++){
-            if(this.time[i].getNome().equalsIgnoreCase(nome)){
+    public String readIntegrantesTime(String nome) {
+        for (int i = 0; i < this.time.length; i++) {
+            if (this.time[i].getNome().equalsIgnoreCase(nome)) {
                 return this.time[i].getIntegranteString();
             }
         }
@@ -195,10 +194,10 @@ public class Hackatona {
         this.timeVencedor = timeVencedor;
     }
 
-    public boolean timeExiste(String nome){
-        for(int i = 0; i<this.time.length; i++){
-            if(this.time[i]!=null){
-                if(this.time[i].getNome().equalsIgnoreCase(nome)){
+    public boolean timeExiste(String nome) {
+        for (int i = 0; i < this.time.length; i++) {
+            if (this.time[i] != null) {
+                if (this.time[i].getNome().equalsIgnoreCase(nome)) {
                     return true;
                 }
             }
@@ -206,19 +205,20 @@ public class Hackatona {
         return false;
     }
 
-    public boolean insereAlunoTime(String nomeTime, Aluno aluno){
-        for(int i=0; i<this.time.length; i++){
-            if(this.time[i].getNome().equalsIgnoreCase(nomeTime)){
+    public boolean insereAlunoTime(String nomeTime, Aluno aluno) {
+        for (int i = 0; i < this.time.length; i++) {
+            if (this.time[i].getNome().equalsIgnoreCase(nomeTime)) {
                 this.time[i].setIntegrante(aluno);
                 return true;
             }
         }
         return false;
     }
-    public boolean removeAlunoTime(Aluno aluno){
-        for(int i=0; i<this.time.length; i++){
-            if(this.time[i]!=null){
-                if(aluno.getTime().equalsIgnoreCase(this.time[i].getNome())){
+
+    public boolean removeAlunoTime(Aluno aluno) {
+        for (int i = 0; i < this.time.length; i++) {
+            if (this.time[i] != null) {
+                if (aluno.getTime().equalsIgnoreCase(this.time[i].getNome())) {
                     this.time[i].deleteIntegrante(aluno);
                     aluno.setTime("<ALUNO SEM TIME>");
                     return true;
@@ -228,11 +228,11 @@ public class Hackatona {
         return false;
     }
 
-    public String consultarTime(String nome){
+    public String consultarTime(String nome) {
         String valor = "ESSE TIME NÃO EXISTE";
-        if(this.timeExiste(nome)){
-            for(int i =0; i<this.time.length; i++){
-                if(this.time[i].getNome().equalsIgnoreCase(nome)){
+        if (this.timeExiste(nome)) {
+            for (int i = 0; i < this.time.length; i++) {
+                if (this.time[i].getNome().equalsIgnoreCase(nome)) {
                     return this.time[i].toString();
                 }
             }
@@ -240,10 +240,10 @@ public class Hackatona {
         return valor;
     }
 
-    public boolean insereNotaTime(String nomeTime, double nota){
-        for(int i=0; i<this.time.length; i++){
-            if(this.time[i]!=null){
-                if(this.time[i].getNome().equalsIgnoreCase(nomeTime)){
+    public boolean insereNotaTime(String nomeTime, double nota) {
+        for (int i = 0; i < this.time.length; i++) {
+            if (this.time[i] != null) {
+                if (this.time[i].getNome().equalsIgnoreCase(nomeTime)) {
                     this.time[i].setNotaFinal(nota);
                     this.time[i].setNotaAtribuida(true);
                     return true;
@@ -253,22 +253,23 @@ public class Hackatona {
         return false;
     }
 
-    public String notaMaiorQueOito(){
-        String times="";
-            for(int i=0; i<this.time.length; i++){
-                if(this.time[i]!=null){
-                    if(this.time[i].getNotaFinal()>8){
-                        times+="\n"+this.time[i].toString();
-                    }
+    public String notaMaiorQueOito() {
+        String times = "";
+        for (int i = 0; i < this.time.length; i++) {
+            if (this.time[i] != null) {
+                if (this.time[i].getNotaFinal() > 8) {
+                    times += "\n" + this.time[i].toString();
                 }
             }
-        return  times;
+        }
+        return times;
     }
-    //Método que verifica se todas as notas foram atribuidas a todos os times;
-    public boolean notasAtribuidas(){
-        for(int i=0; i<this.time.length; i++){
-            if(this.time[i]!=null){
-                if(this.time[i].isNotaAtribuida()){
+
+    // Método que verifica se todas as notas foram atribuidas a todos os times;
+    public boolean notasAtribuidas() {
+        for (int i = 0; i < this.time.length; i++) {
+            if (this.time[i] != null) {
+                if (this.time[i].isNotaAtribuida()) {
                     return true;
                 }
             }
@@ -276,13 +277,13 @@ public class Hackatona {
         return false;
     }
 
-    public String retornaVencedor(){
-        String timeVencedor="AS NOTAS AINDA NÃO FORAM ATRIBUIDAS A TODOS OS TIMES";
-        if(notasAtribuidas()){
-            double maiorNota =0;
-            for(int i=0; i<this.time.length; i++){
-                if(this.time[i]!=null){
-                    if(this.time[i].getNotaFinal()>maiorNota){
+    public String retornaVencedor() {
+        String timeVencedor = "AS NOTAS AINDA NÃO FORAM ATRIBUIDAS A TODOS OS TIMES";
+        if (notasAtribuidas()) {
+            double maiorNota = 0;
+            for (int i = 0; i < this.time.length; i++) {
+                if (this.time[i] != null) {
+                    if (this.time[i].getNotaFinal() > maiorNota) {
                         maiorNota = this.time[i].getNotaFinal();
                         timeVencedor = this.time[i].toString();
                     }
@@ -292,24 +293,27 @@ public class Hackatona {
         return timeVencedor;
     }
 
-    public boolean encerrarCompeticao(){
-        for(int i=0; i<this.time.length; i++){
-            if(this.time[i]!=null){
-                 this.time[i].setNotaAtribuida(true);
+    public boolean encerrarCompeticao() {
+        for (int i = 0; i < this.time.length; i++) {
+            if (this.time[i] != null) {
+                this.time[i].setNotaAtribuida(true);
             }
         }
         return true;
     }
+
     public boolean profLogin(String email, int matricula) {
         for (int i = 0; i < this.professores.length; i++) {
             if (this.professores[i] != null) {
-                if (this.professores[i].getEmail().endsWith(email) && this.professores[i].getIdFuncional() == matricula) {
+                if (this.professores[i].getEmail().endsWith(email)
+                        && this.professores[i].getIdFuncional() == matricula) {
                     return true;
                 }
             }
         }
         return false;
     }
+
     public boolean alunoLogin(String email, int matricula) {
         for (int i = 0; i < this.alunos.length; i++) {
             if (this.alunos[i] != null) {
@@ -344,7 +348,5 @@ public class Hackatona {
     public void setAlunosCadastrados(int alunosCadastrados) {
         this.alunosCadastrados = alunosCadastrados;
     }
-
-    
 
 }
